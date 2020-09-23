@@ -1,11 +1,13 @@
 import { Router } from 'express'
-import { create, update, destroy, authenticate, logout, createToken } from '../Controllers/user'
+import index from '../Controllers/user/'
+import knex from '../Database'
 
 const usersRouter = Router()
 
 // Create, update and delete user
 usersRouter
-	.post('/users', create)
+	.post('/users', index.create(knex))
+/*
 	.put('/users', update)
 	.delete('/users', destroy)
 
@@ -17,5 +19,5 @@ usersRouter
 // Create a temporary access token based on user refresh token
 usersRouter
 	.post('/users/token', createToken)
-
+*/
 export default usersRouter
