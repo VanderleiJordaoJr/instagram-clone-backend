@@ -10,11 +10,11 @@ usersRouter
 /*
 	.put('/users', update)
 	.delete('/users', destroy)
-
+*/
 // Create and delete user refresh token
 usersRouter
-	.post('/users/login', authenticate)
-	.delete('/users/logout', logout)
+	.post('/users/login', index.authenticate(knex))
+/*	.delete('/users/logout', logout)
 
 // Create a temporary access token based on user refresh token
 usersRouter

@@ -3,8 +3,9 @@ import { nanoid } from 'nanoid'
 import { hash } from 'bcrypt'
 import Knex from 'knex'
 
-export default (knex: Knex) => {
+export default (knex: any) => {
 	return async (req: Request, res: Response): Promise<Response> => {
+		console.log(res)
 		const { username, email, name, password } = req.body
 		if (!username || !email || !name || !password)
 			return res.sendStatus(400)
@@ -17,9 +18,8 @@ export default (knex: Knex) => {
 				id, username, email, name, password: hashedPassword
 			}
 			const transaction = await knex.transaction()
-			transaction('Users').insert(user).withSchema('InstagramClone')
-
-			transaction.commit()
+			await transaction('Users').insert(user).withSchema('InstagramClone')
+			await transaction.commit()
 			return res.sendStatus(201)
 		} catch (error) {
 			return res.sendStatus(500)
