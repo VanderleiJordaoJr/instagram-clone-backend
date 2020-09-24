@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import { hash } from 'bcrypt'
 import Knex from 'knex'
 
-export default (knex: any) => {
+export default (knex: Knex) => {
 	return async (req: Request, res: Response): Promise<Response> => {
 		console.log(res)
 		const { username, email, name, password } = req.body

@@ -4,7 +4,8 @@
     "description": "",
     "main": "src/server.ts",
     "scripts": {
-        "dev": "nodemon"
+        "dev": "nodemon",
+        "sonar": "node sonarqube.js"
     },
     "repository": {
         "type": "git",
